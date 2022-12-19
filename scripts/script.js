@@ -1,77 +1,69 @@
-const themeIcon = document.getElementById("theme-icon");
-const res = document.getElementById("result");
-const toast = document.getElementById("toast");
+let op = function() {
+    alert("Escolha uma opção antes");
+} 
 
-function calculate(value) {
-  const calculatedValue = eval(value || null);
-  if (isNaN(calculatedValue)) {
-    res.value = "Não é possível dividir por zero";
-    setTimeout(() => {
-      res.value = "";
-    }, 1300);
-  } else {
-    res.value = calculatedValue;
-  }
+function sum(num1, num2) {
+    return num1 + num2;
 }
 
-function liveScreen(enteredValue) {
-  if (!res.value) {
-    res.value = "";
-  }
-  res.value += enteredValue;
+function sub(num1, num2) {
+    return num1 - num2;
+}
+function div(num1, num2) {
+        if(num1==0){
+            return 0;
+        }
+    if (num2 == 0){
+        return "Não é possível dividir por zero";
+    }else{
+        return num1 / num2;
+    }
+    
+    
+}
+function mult(num1, num2) {
+    return num1 * num2;
 }
 
-document.addEventListener("keydown", keyboardInputHandler);
 
-function keyboardInputHandler(e) {
+function operation() {
+    const answer = document.getElementById('answer');
+    const select = document.getElementById('operation');
 
-  e.preventDefault();
+    const selectedOperation = select.selectedIndex;
 
+    switch (selectedOperation) {
+        case 1:
+            answer.innerText = '';
+            op = sum;
+            break;
+        case 2:
+            answer.innerText = '';
+            op = sub;
+            break;
+        default:
+            break;
+        case 3:
+            answer.innerText = '';
+            op = div;
+            break;
+        case 4:
+            answer.innerText = ' ';
+            op = mult;
+            break;
+    }
+}
 
-  if (e.key === "0") {
-    res.value += "0";
-  } else if (e.key === "1") {
-    res.value += "1";
-  } else if (e.key === "2") {
-    res.value += "2";
-  } else if (e.key === "3") {
-    res.value += "3";
-  } else if (e.key === "4") {
-    res.value += "4";
-  } else if (e.key === "5") {
-    res.value += "5";
-  } else if (e.key === "6") {
-    res.value += "6";
-  } else if (e.key === "7") {
-    res.value += "7";
-  } else if (e.key === "7") {
-    res.value += "7";
-  } else if (e.key === "8") {
-    res.value += "8";
-  } else if (e.key === "9") {
-    res.value += "9";
-  }
+function calculate() {
+    // referências aos elementos
+    const num1Input = document.getElementById('num1');
+    const num2Input = document.getElementById('num2');
+    const answer = document.getElementById('answer');
 
-  if (e.key === "+") {
-    res.value += "+";
-  } else if (e.key === "-") {
-    res.value += "-";
-  } else if (e.key === "*") {
-    res.value += "*";
-  } else if (e.key === "/") {
-    res.value += "/";
-  }
+    // valores dos inputs
+    const num1 = parseInt(num1Input.value);
+    const num2 = parseInt(num2Input.value);
+    const resp = op(num1, num2);
 
-  if (e.key === ".") {
-    res.value += ".";
-  }
-
-  if (e.key === "Enter") {
-    calculate(result.value);
-  }
-
-  if (e.key === "Backspace") {
-    const resultInput = res.value;
-    res.value = resultInput.substring(0, res.value.length - 1);
-  }
+    answer.innerText = resp;
 }

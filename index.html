@@ -2,55 +2,34 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Calculadora</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/x-icon" href="assets/calculator.ico">
-  <link rel="stylesheet" href="styles/style.css" id="theme" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Calculadora</title>
 </head>
 
 <body>
-  <div class="wrapper">
-    <div class="container">
-      <div class="header-container">
-        <h1 id="toast">Calculadora</h1>
-      </div>
-      <div class="first-row">
-        <input type="text" name="result" id="result" placeholder="Resultado" readonly />
-        <input type="button" value="C" onclick="result.value=''" id="clear-button" />
-      </div>
-      <div class="second-row">
-        <input type="button" value="1" onclick="liveScreen(1)" />
-        <input type="button" value="2" onclick="liveScreen(2)" />
-        <input type="button" value="3" onclick="liveScreen(3)" />
-        <input type="button" value="+" onclick="liveScreen('+')" />
-      </div>
-      <div class="third-row">
-        <input type="button" value="4" onclick=" liveScreen(4)" />
-        <input type="button" value="5" onclick=" liveScreen(5)" />
-        <input type="button" value="6" onclick=" liveScreen(6)" />
-        <input type="button" value="-" onclick="liveScreen('-')" />
-      </div>
-      <div class="fourth-row">
-        <input type="button" value="7" onclick="liveScreen(7)" />
-        <input type="button" value="8" onclick="liveScreen(8)" />
-        <input type="button" value="9" onclick=" liveScreen(9)" />
-        <input type="button" value="x" onclick="liveScreen('*')" />
-      </div>
-      <div class="fifth-row">
-        <input type="button" value="/" onclick="liveScreen('/')" />
-        <input type="button" value="0" onclick="liveScreen(0)" />
-        <input type="button" value="." onclick="liveScreen('.')" />
-        <input type="button" value="=" onclick="calculate(result.value)" />
-      </div>
-    </div>
-  </div>
-  <script src="scripts/script.js">
-  </script>
+    <header>
+        <div class="calc">
+            <select name="operation" id="operation" onchange="operation()">
+                <option value="0">Escolha um</option>
+                <option value="1">Adição</option>
+                <option value="2">Subtração</option>
+                <option value="3">Divisão</option>
+                <option value="4">Multiplicação</option>
+            </select>
+
+            <p>Número: <input type="text" id="num1"></p>
+            <p>Número: <input type="text" id="num2"></p>
+            <button id='calc' onclick='calculate();'>Calcular</button>
+            <p>Resposta:</p>
+            <p id="answer"></p>
+        </div>
+
+    </header>
+
+    <script src="scripts/script.js"></script>
 </body>
 
 </html>
